@@ -12,6 +12,12 @@ const createProduct = async (req, res, next) => {
     price,
   });
   const result = await createdProduct.save(); // .save is importent to save data
+
+  // edu mongoDB li "_id" eruttalla adu "object" datatype alli erutta
+  //  adanna "string" ge convert madakke "_id" badlu " id " use madthare
+  console.log(typeof createdProduct._id);
+  console.log(typeof createdProduct.id);
+
   res.json({ products: result });
 };
 //
