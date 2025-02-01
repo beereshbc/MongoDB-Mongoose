@@ -1,14 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoPractice = require('./mongo');
+import express from "express";
+import bodyParser from "body-parser";
 
+import { createProduct, getProduct } from "./mongoose.js";
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/products', mongoPractice.createProduct);
+app.post("/products", createProduct);
 
-app.get('/products', mongoPractice.getProducts);
+app.get("/products", getProduct);
 
 app.listen(3000);
